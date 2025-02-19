@@ -36,14 +36,20 @@ Below are some of my projects I have worked on achieving diverse
 """
 st.write(content2)
 
-col3, col4 = st.columns(2)
+col3, empty_col, col4 = st.columns([1.5, 0.3, 1.5])
 df = pd.read_csv('data.csv', sep=";")
 
 with col3:
     for idx, row in df[:10].iterrows():
         st.header(row['title'])
+        st.write(row['description'])
+        st.image(f"images/{row['image']}", width=400)
+        st.write(f"[Source Code] ({row['url']})")
 
 
 with col4:
     for idx, row in df[10:].iterrows():
         st.header(row['title'])
+        st.write(row['description'])
+        st.image(f"images/{row['image']}", width=400)
+        st.write(f"[Source Code] ({row['url']})")
